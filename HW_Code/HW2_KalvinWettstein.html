@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 2</title>
+</head>
+<body>
+    <h1>Athlead</h1>
+    <h3>BYU vs Gonzaga Report</h3>
+
+    <script>
+        
+        //Kalvin Wettstein
+        //Section 001
+        /* This program generate two random numbers for BYU and Gonzaga between
+         0 and 100. it then compares the two and output the results or the 'game'*/ 
+
+        //declare variables
+        var byuScore;
+        var gonzagaScore;
+        var output;
+        var msg;
+
+        //generate random scores for BYU and gonzaga between 0 and 100
+        byuScore = Math.floor(Math.random() * 101);
+        gonzagaScore = Math.floor(Math.random() * 101);
+
+        //compare scores and assign msg variable the result of the game 
+        if (byuScore > gonzagaScore) {
+            msg = "BYU wins!"
+        } 
+        else if (gonzagaScore > byuScore) {
+            msg = "Gonzaga wins!"
+        }
+        else {
+            msg = "Tie game!"
+        }
+
+        /*assign output variable the information to be displayed in the alert box;
+         team scores and result of the game (msg)*/
+        output = "BYU " + byuScore + "\n"
+                    + "Gonzaga " + gonzagaScore + "\n \n"
+                    + msg
+        
+        //alert the output variable
+        alert(output)
+
+    </script>
+</body>
+</html>
+
+

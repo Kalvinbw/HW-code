@@ -1,0 +1,72 @@
+<!--Kalvin Wettstein
+    Section 001
+    HW 3-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW3</title>
+</head>
+<body>
+    <h1 id="nameAndRecord">Team Name and Record</h1>
+    <h2 id="results">Results</h2>
+
+    <script>
+        
+            //This code will ask for a team name and how many games are in the season via two prompts
+        var teamName = prompt("What is the team name?", "BYU");
+        var numGames = parseInt(prompt("How many games in the season?", "1"));
+        
+            //declaring variables and setting them to start values
+        var teamScore;
+        var oppScore;
+        var wins = 0;
+        var losses = 0;
+        
+            //this is the variable that will be updated based on the win-loss percentage
+        var result;
+
+            /*loop to get a team name for each game and assign a random number between 0 and 100
+                for each team*/
+        for (var i = 0; i < numGames; i++) {
+            prompt("Opposing team name " + (i + 1));
+            teamScore = Math.floor(Math.random() * 100);
+            oppScore = Math.floor(Math.random() * 100);
+            
+                /*if statement to test outcomes. if a tie enter the do while loop.
+                if a loss or win for the main team then add one to wins or losses*/
+            if (teamScore === oppScore) {
+                    /*do while loop to get random numbers until no tie*/
+                do {
+                    teamScore = Math.floor(Math.random() * 100);
+                    oppScore = Math.floor(Math.random() * 100);    
+                } while (teamScore === oppScore);
+                    //nested if block to determine the win or loss after the do while tie is broken
+                if (teamScore < oppScore) {
+                losses++;
+                } else { wins++; }   
+            } else if (teamScore < oppScore) {
+                losses++;
+            } else {
+                wins++;
+            }
+        }
+            /*if block to determine the percentage of wins to total games and assign string to 
+            result variable*/
+        if ((wins / (wins + losses)) >= .75) {
+            result = "March Madness";
+        } else if ((wins / (wins + losses)) >= .5) {
+            result = "NIT Tournament";
+        } else {
+            result = "See you next year";
+        }
+            //alert the team name and wins to losses and the result variable
+        alert(teamName + " " + wins + "-" + losses + "\n" + result)
+
+            //put the final alert box values on the document as well
+        document.getElementById("nameAndRecord").innerHTML = teamName + " " + wins + "-" + losses
+        document.getElementById("results").innerHTML = result
+    </script>
+</body>
+</html>

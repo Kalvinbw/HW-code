@@ -1,0 +1,63 @@
+    <!--Kalvin Wettstein
+        HW 4
+        Section 001-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 4</title>
+</head>
+<body>
+        <!--Button to run the function-->
+    <button id="runCode" onclick="runCode()">Run the code</button>
+    
+    <script>
+            //funtion to run the HW 4 code
+        function runCode() {
+                //prompts user to enter a number of teams and checks if the number is a true number
+            var numTeams = parseInt(prompt("How many teams?"));
+             if (isNaN(numTeams) === true) {
+                 alert("No teams to display")
+             } else {
+                //if a real number has been entered continue with function below
+                //declare arrays and variables
+            var teamNames = [];
+            var wins = [];
+            var teamRecord = [];
+            var holdWin;
+            var holdName;
+                /*for loop to prompt the user for team names based on the number of teams they entered.
+                pushes names to the teamNames array and makes a random number of wins for each team*/ 
+            for (var i = 0; i < numTeams; i++) {
+                teamNames.push(prompt("What is team " + (i + 1) + "'s name?"));
+                wins.push(Math.floor(Math.random() * 26));
+            }
+                //bubble sort for loop to order the wins and names from highest to lowest (based on wins)
+            for (var j = 0; j < wins.length - 1; j++) {
+                for (i = j + 1; i < wins.length; i++) {
+                    if (wins[j] < wins[i]) {
+                        holdWin = wins[i];
+                        holdName = teamNames[i];
+
+                        wins[i] = wins[j];
+                        teamNames[i] = teamNames[j];
+
+                        wins[j] = holdWin;
+                        teamNames[j] = holdName;
+                    }  
+                }
+            }
+                //for loop to push the team name and wins (as well as calculated losses) to an array
+            for (k = 0; k < wins.length; k++) {
+                teamRecord.push(teamNames[k] + " " + wins[k] + " - " + (25 - wins[k]));
+            }
+                //alert the team with the best record
+            alert(teamNames[0] + " had the most wins with a record of " + wins[0] + " - " + (25 - wins[0]));
+                //alert all the teams and there records on separate lines
+            alert(teamRecord.join("\n"));
+            }
+        }
+    </script>
+</body>
+</html>
